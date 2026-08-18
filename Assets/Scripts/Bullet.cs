@@ -3,8 +3,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
 {
-    public int damageBullet;
-    public float BulletSpeed = 3f;
+    [SerializeField] private int damageBullet;
+    [SerializeField] private float BulletSpeed = 3f;
+    [SerializeField] private float timeLife;
+    [SerializeField] private GameObject prefabParticleHit;
 
     private Rigidbody2D rb;
 
@@ -28,9 +30,27 @@ public class Bullet : MonoBehaviour
         //codigo cuando choque con enemigo
         Enemy enemy = actualEnemy.GetComponent<Enemy>();
 
-        enemy.TakeDamage(damageBullet);
+        if (enemy != null)
+        {
+            enemy.TakeDamage(damageBullet);
+        }
+        else
+        {
+            Debug.LogWarning("Script de enemigo no asignado >:(");
+        }
+
+        SpawnParticle();
 
         Destroy(gameObject);
+    }
+
+    private void SpawnParticle()
+    {
+        if (prefabParticleHit == null) return;
+
+        GameObject particleHit = Instantiate(prefabParticleHit,transform.position,Quaternion.identity);
+
+        Destroy(particleHit, 1.25f);
     }
 
 }
