@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
   damageBullet: 10
-  BulletSpeed: 3
+  BulletSpeed: 7
   timeLife: 5
   prefabParticleHit: {fileID: 6499781154474650453, guid: 1fee90ab997a78e419a01d45fb1b788c, type: 3}
 --- !u!58 &1305664295146055884
