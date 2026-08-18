@@ -1,44 +1,24 @@
 using UnityEngine;
-public class SisEnemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
-    void Start()
+    public string EnemyName;
+    public float Hp;
+
+    public void TakeDamage(float damagePlayer)
     {
-        Enemy skull = new Enemy();
-        skull.EnemyName = "Skull";
-        skull.Hp = 8;
-
-        Enemy witch = new Enemy();
-        skull.EnemyName = "RedWitch";
-        skull.Hp = 70;
-
+        Hp -= damagePlayer;
     }
-    void Update()
+    public void Death()
     {
-    }
-
-    public class Enemy
-    {
-        public string EnemyName;
-        public float Hp;
-
-        public void TakeDamage(float damagePlayer)
+        if (Hp >= 0f)
         {
-            Hp -= damagePlayer;
+            Destroy(gameObject); 
         }
-        public void Death()
-        { // morir cuando su vida llegue a cero elimando el objeto 
-            if (Hp >= 0f)
-            {
-                // Destroy(GameObject); // mejorar linea
-            }
-        }
-
-
-
-
-
-
     }
+
+
+
+
 
 
 }
