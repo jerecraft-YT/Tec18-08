@@ -12,6 +12,11 @@ public class Movimiento_Santiago : MonoBehaviour
 
     [SerializeField] private GameObject PrefabBullet;
 
+    [SerializeField] private Animator player_animator;
+
+    [SerializeField] private Transform player_direction;
+
+
     private Camera camaraPrincipal;
 
     private void Start()
@@ -47,6 +52,23 @@ public class Movimiento_Santiago : MonoBehaviour
         float nuevoX = transform.position.x + (inputX * velocidad * Time.deltaTime);
 
         transform.position = new Vector3(nuevoX, transform.position.y, transform.position.z);
+
+        if (idirection != Vector2.zero)
+        {
+            if (idirection.x > 0)
+            {
+            player_direction.transform.localScale = Vector2.one;
+            }
+            else
+            {
+            player_direction.transform.localScale = new Vector2(-1, 1);
+            }
+            player_animator.SetBool("its_moving", true);
+        }
+        else
+        {
+            player_animator.SetBool("its_moving", false);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -91,4 +113,8 @@ public class Movimiento_Santiago : MonoBehaviour
 
         Instantiate(PrefabBullet, origen, rotacion);
     }
+
+
+
+
 }
