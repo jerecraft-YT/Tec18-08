@@ -1,6 +1,18 @@
 using UnityEngine;
 public class Enemy : MonoBehaviour
 {
+
+    public void Start()
+    {
+       
+    }
+
+    public void Update()
+    {
+
+
+    }
+
     public string EnemyName;
     public float Hp;
 
