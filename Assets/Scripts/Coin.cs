@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Coin : MonoBehaviour
 {
-    public int Money;
+    public int CoinValue;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,7 +16,7 @@ public class Coin : MonoBehaviour
     private void CollectCoin()
     {
         //debug para mostrar cuanto obtuviste
-        Debug.Log($"obtuviste {Money}");
+        Debug.Log($"obtuviste {CoinValue}");
 
         Destroy(gameObject);
     }
